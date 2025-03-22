@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Travel Destination Recommendations</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #333;
+        background-color: #fafafa;
+      }
+      nav {
+        background-color: rgba(25, 25, 25, 0.9);
+        color: white;
+        padding: 0.8rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      .logo-container {
+        display: flex;
+        align-items: center;
+      }
+      .logo-container img {
+        height: 40px;
+        margin-right: 10px;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 0;
+        position: relative;
+        transition: color 0.3s;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #f8c300;
+        transition: width 0.3s;
+      }
+      .nav-links a:hover {
+        color: #f8c300;
+        text-decoration: none;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .about-header {
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("public/background.jpg");
+        background-position: center;
+        background-size: cover;
+        color: white;
+        text-align: center;
+        padding: 8rem 2rem;
+      }
+      .about-header h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      .about-header p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+      .about-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+      }
+      .section {
+        margin-bottom: 5rem;
+      }
+      .section:last-child {
+        margin-bottom: 0;
+      }
+      .section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: #222;
+      }
+      .section p {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 1.5rem;
+      }
+      .divider {
+        height: 3px;
+        width: 80px;
+        background-color: #f8c300;
+        margin: 0 auto 3rem;
+      }
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      .card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        padding: 2.5rem;
+        flex: 1;
+        min-width: 280px;
+        max-width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .card i {
+        font-size: 2.5rem;
+        color: #f8c300;
+        margin-bottom: 1.5rem;
+      }
+      .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #222;
+      }
+      .card p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      .mission-values {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+      .mission-col,
+      .values-col {
+        flex: 1;
+        min-width: 300px;
+      }
+      .mission-col h3,
+      .values-col h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: #222;
+        position: relative;
+        padding-bottom: 0.8rem;
+      }
+      .mission-col h3:after,
+      .values-col h3:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background-color: #f8c300;
+      }
+      .values-list {
+        padding: 0;
+        list-style-type: none;
+      }
+      .values-list li {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.6;
+      }
+      .values-list li:before {
+        content: "•";
+        color: #f8c300;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+      }
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .team-member {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .team-member:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+      .team-member h3 {
+        margin: 0 0 0.5rem 0;
+        color: #222;
+        font-size: 1.4rem;
+      }
+      .team-member .role {
+        color: #f8c300;
+        font-weight: 600;
+        margin: 0 0 1rem 0;
+        font-size: 1rem;
+      }
+      .team-member p:not(.role) {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-container">
+        <img src="public/logo.png" alt="TravelGuide Logo" />
+        <div class="logo">TravelGuide</div>
+      </div>
+      <div class="nav-links">
+        <a href="travel_recommendation.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </nav>
+
+    <header class="about-header">
+      <h1>About TravelGuide</h1>
+      <p>Connecting travelers with extraordinary destinations since 2010</p>
+    </header>
+
+    <main class="about-content">
+      <section class="section">
+        <h2>Our Story</h2>
+        <div class="divider"></div>
+        <p>
+          TravelGuide was born from a passion for exploration and a desire to
+          share the world's most remarkable destinations. Founded in 2010, our
+          platform has evolved from a simple travel blog into a comprehensive
+          recommendation engine trusted by millions of adventurers worldwide.
+        </p>
+        <p>
+          What sets us apart is our commitment to authentic experiences that go
+          beyond typical tourist attractions. Our recommendations are carefully
+          curated to help you discover hidden gems, local cultures, and
+          unforgettable moments that define truly meaningful travel.
+        </p>
+        <p>
+          As avid travelers ourselves, we understand the transformative power of
+          discovering new places. Every destination has a story to tell, and
+          we're here to help you become part of that narrative, creating
+          memories that will last a lifetime.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Our Approach</h2>
+        <div class="divider"></div>
+        <div class="mission-values">
+          <div class="mission-col">
+            <h3>Our Mission</h3>
+            <p>
+              We believe travel is more than just visiting new places—it's about
+              personal growth, understanding different perspectives, and
+              connecting with diverse cultures. Our mission is to inspire and
+              empower people to explore the world meaningfully, responsibly, and
+              joyfully.
+            </p>
+            <p>
+              Through our platform, we strive to break down barriers to travel,
+              providing accessible information and personalized recommendations
+              that make planning your next adventure both exciting and
+              effortless.
+            </p>
+          </div>
+          <div class="values-col">
+            <h3>Our Values</h3>
+            <ul class="values-list">
+              <li>
+                <strong>Authenticity</strong> - We prioritize genuine, local
+                experiences over tourist traps
+              </li>
+              <li>
+                <strong>Sustainability</strong> - We promote responsible travel
+                that respects environments and communities
+              </li>
+              <li>
+                <strong>Inclusivity</strong> - We believe travel should be
+                accessible to everyone
+              </li>
+              <li>
+                <strong>Curiosity</strong> - We encourage exploration, learning,
+                and stepping outside comfort zones
+              </li>
+              <li>
+                <strong>Connection</strong> - We value the relationships formed
+                through shared travel experiences
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Our Team</h2>
+        <div class="divider"></div>
+        <p>
+          Behind TravelGuide is a diverse team of passionate travelers, tech
+          enthusiasts, and hospitality experts. Collectively, our team has
+          explored over 100 countries across all seven continents, bringing
+          first-hand knowledge and authentic insights to our platform.
+        </p>
+        <p>
+          United by our love for discovery, we work tirelessly to curate the
+          best travel recommendations, forge partnerships with local businesses,
+          and develop technology that makes finding your perfect destination
+          seamless and enjoyable.
+        </p>
+
+        <div class="team-grid">
+          <div class="team-member">
+            <h3>Sarah Johnson</h3>
+            <p class="role">Founder & CEO</p>
+            <p>
+              Passionate about sustainable tourism with experience in over 50
+              countries across all continents.
+            </p>
+          </div>
+          <div class="team-member">
+            <h3>Michael Chen</h3>
+            <p class="role">Chief Experience Officer</p>
+            <p>
+              Specializes in creating authentic cultural experiences and
+              off-the-beaten-path adventures.
+            </p>
+          </div>
+          <div class="team-member">
+            <h3>Elena Rodriguez</h3>
+            <p class="role">Head of Content</p>
+            <p>
+              Award-winning travel writer who brings destinations to life
+              through compelling storytelling.
+            </p>
+          </div>
+          <div class="team-member">
+            <h3>James Wilson</h3>
+            <p class="role">Chief Technology Officer</p>
+            <p>
+              Tech innovator focused on creating seamless digital experiences
+              for travelers worldwide.
+            </p>
+          </div>
+          <div class="team-member">
+            <h3>Priya Sharma</h3>
+            <p class="role">Destination Research Director</p>
+            <p>
+              Cultural anthropologist who ensures our recommendations respect
+              local traditions and customs.
+            </p>
+          </div>
+          <div class="team-member">
+            <h3>Robert Okafor</h3>
+            <p class="role">Sustainability Lead</p>
+            <p>
+              Environmental specialist ensuring our travel recommendations
+              promote responsible tourism practices.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
