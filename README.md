@@ -4,11 +4,11 @@ This project is a web-based travel destination recommendation platform. It allow
 
 ## Features
 
-- Search functionality for destinations with keyword matching.
-- Categorized results for countries, temples, and beaches.
-- Local time display for destinations based on their time zones.
-- Responsive design with a modern UI.
-- Contact pages and About pages for additional information.
+- Search functionality for destinations with keyword matching
+- Categorized results for countries, temples, and beaches
+- Local time display for destinations based on their time zones
+- Responsive design with a modern UI
+- Contact and About pages for additional information
 
 ## Project Structure
 
