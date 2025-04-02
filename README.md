@@ -1,4 +1,4 @@
-# Travel Destination Recommendations
+# Travel Destination Recommendations - Demo Project
 
 This project is a web-based travel destination recommendation platform. It allows users to search for destinations, including countries, cities, temples, and beaches, and provides detailed information about each destination.
 
